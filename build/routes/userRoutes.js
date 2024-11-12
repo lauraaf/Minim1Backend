@@ -29,4 +29,6 @@ router.put("/changeRol/:id", userController_1.changeRol);
 router.patch("/enable/:id", verifyJWT_1.TokenValidation, verifyAdmin_1.AdminValidation, userController_1.enableUser);
 //Ruta para Deshabilitar un usuario por ID
 router.patch("/disable/:id", verifyJWT_1.TokenValidation, verifyAdmin_1.AdminValidation, userController_1.disableUser);
+//Ruta per obtenir el username dun user a traves del ID
+router.get("/getUsernameById/:id", userController_1.getUsernamByID);
 exports.default = router;

@@ -109,7 +109,7 @@ export async function login(req: Request, res: Response): Promise<Response> {
             console.log('creem token');
             //Creem token
             const token: string = jwt.sign({username: username, admin: loggedUser.admin}, process.env.SECRET || 'token');
-            return res.json({ message: 'user logged in', token: token });
+            return res.json({ message: 'user logged in', token: token, id: loggedUser.id });
         }
         return res.status(400).json({ error: 'Incorrect password'})
     } catch(error) {
@@ -188,4 +188,18 @@ export async function disableUser (req: Request, res: Response): Promise<Respons
 
     }
 
+}
+
+export async function getUsernamByID(req: Request, res: Response): Promise<Response> {
+    try {
+        console.log('Get user');
+        const id = req.params.id;
+        const user = await userServices.getEntries.findById(id)
+        if(!user) {
+            return res.status(404).json({ error: `User with id ${id} not found` });
+        }
+        return res.json(user.username);
+    } catch (error) {
+        return res.status(500).json({ error: 'Failed to get user' });
+    }
 }

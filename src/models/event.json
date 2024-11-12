@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Manifestació 8M",
+        "description": "Manifestació per lluitar per a la Igualtat",
+        "date": "2024-3-8",
+        "ubication": [],
+        "creator": "6710c054cce9e30096ac82f3"
+    },
+    {
+        "name": "Presentació Elisabet Benavent",
+        "description": "Presentació del nou llibre de Elisabet Benavent",
+        "date": "2024-11-30",
+        "ubication": [],
+        "creator": "6710c054cce9e30096ac82f3"
+    },
+    {
+        "name": "Festival de Blues",
+        "description": "Festival en memòria de les grans vocalistes de Blues & Soul dels 60s",
+        "date": "2024-12-10",
+        "ubication": [41.36414467348281, 2.151997581539155],
+        "creator": "6710c054cce9e30096ac82f3"
+    },
+    {
+        "name": "Xerrada sobre detecció d'abusos",
+        "description": "Xerrada sobre com podem detectar els abusos que patim diariament",
+        "date": "2024-1-30",
+        "ubication": [41.280922845032755, 1.984543052942976],
+        "creator": "6710c054cce9e30096ac82f3"
+    }
+]
+

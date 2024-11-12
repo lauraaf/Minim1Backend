@@ -45,7 +45,7 @@ exports.checkUsername = checkUsername;
 exports.changeRol = changeRol;
 exports.enableUser = enableUser;
 exports.disableUser = disableUser;
-
+exports.getUsernamByID = getUsernamByID;
 //import { userInterface } from "../models/user";
 const userServices = __importStar(require("../services/userServices"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -159,7 +159,7 @@ function login(req, res) {
                 console.log('creem token');
                 //Creem token
                 const token = jsonwebtoken_1.default.sign({ username: username, admin: loggedUser.admin }, process.env.SECRET || 'token');
-                return res.json({ message: 'user logged in', token: token });
+                return res.json({ message: 'user logged in', token: token, id: loggedUser.id });
             }
             return res.status(400).json({ error: 'Incorrect password' });
         }
@@ -183,7 +183,6 @@ function checkUsername(req, res) {
         }
     });
 }
-
 function changeRol(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -206,7 +205,9 @@ function changeRol(req, res) {
         }
         catch (_a) {
             return res.status(500).json({ message: `Error al cambiar el rol de admin` });
-
+        }
+    });
+}
 //funciones para habilitar usuarios 
 function enableUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -238,6 +239,22 @@ function disableUser(req, res) {
         catch (error) {
             console.error("Error al deshabilitar usuario:", error.message);
             return res.status(500).json({ error: "Error al deshabilitar el usuario" });
+        }
+    });
+}
+function getUsernamByID(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            console.log('Get user');
+            const id = req.params.id;
+            const user = yield userServices.getEntries.findById(id);
+            if (!user) {
+                return res.status(404).json({ error: `User with id ${id} not found` });
+            }
+            return res.json(user.username);
+        }
+        catch (error) {
+            return res.status(500).json({ error: 'Failed to get user' });
         }
     });
 }

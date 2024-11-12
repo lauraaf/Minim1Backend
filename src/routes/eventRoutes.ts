@@ -1,44 +1,23 @@
 import express from 'express';
-import * as eventServices from '../services/eventServices'
+//import * as eventServices from '../services/eventServices'
+import {getEvents, getEventByID, createEvent, updateEventByID, deleteEvent} from '../controllers/eventController'
 
 
 const eventRoutes = express.Router()
 
 // Ruta para obtener todos los eventos
-eventRoutes.get('/', async(_req, res) => {
-    const data = await eventServices.getEntries.getAll()
-    return res.json(data);
-})
+eventRoutes.get('/', getEvents)
 
 // Ruta para obtener un evento por ID
-eventRoutes.get('/:id', async(req, res) => {
-    const data = await eventServices.getEntries.findById(req.params.id)
-    return res.json(data);
-})
+eventRoutes.get('/:id', getEventByID)
 
 // Ruta para crear un nuevo evento
-eventRoutes.post('/', async(req, res) => {
-    const data = await eventServices.getEntries.create(req.body)
-    return res.json(data);
-})
+eventRoutes.post('/', createEvent)
 
 // Ruta para actualizar un evento por ID
-eventRoutes.put('/:id', async(req, res) => {
-    const data = await eventServices.getEntries.update(req.params.id,req.body)
-    return res.json(data);
-})
+eventRoutes.put('/:id', updateEventByID)
 
 // Ruta para eliminar un evento por ID
-eventRoutes.delete('/:id', async(req, res) => {
-    const data = await eventServices.getEntries.delete(req.params.id)
-    return res.json(data);
-})
+eventRoutes.delete('/:id', deleteEvent)
 
-
-
-//ruta para habilitar usuarios 
-
-
-
-
-export default eventRoutes 
+export default eventRoutes  

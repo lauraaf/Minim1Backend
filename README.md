@@ -1,25 +1,7 @@
-# StayCloseApp
+# Minim 1 BackEnd
 
----------------User functions---------------
-- create
-- update
-- delete
-- getUser --> Ruta cambiada
-- getUsers --> Ruta cambiada
-- login --> nomes deixa loggear als admins
+> Totes les funcions demanades estan implementades
 
-Paginació d'usuaris funcionant
 
----------------Post functions---------------
-- create
-- update
-- getAll
-- delete
-- getPost
-- getPosts
-
----------------To execute---------------
-- tsc  
-- node build/index.js  
 
 
